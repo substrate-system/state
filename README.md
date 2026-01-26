@@ -35,7 +35,9 @@ npm i -S @substrate-system/package
 
 ## Example
 
-### TS
+### `RequestFor`
+
+Model an HTTP request.
 
 ```ts
 import { type HTTPError } from 'ky'
@@ -57,6 +59,34 @@ set(myRequest, 'abc')
 
 error(myRequest, new Error('ok'))
 // { data: 'abc', error: Error, pending: false }
+```
+
+### With Signals
+
+A good combination is [@preact/signals](https://preactjs.com/guide/v10/signals)
+plus this module.
+
+```ts
+import { type HTTPError, ky } from 'ky'
+import { type Signal, signal } from '@preact/signals'
+import {
+    type RequestFor,
+    RequestState
+} from '@substrate-system/state'
+const { start, set, error } = RequestState
+
+const myRequestSignal:Signal<RequestFor<{
+    hello:string
+}>> = signal(RequestState(null))
+
+try {
+    myRequestSignal.value = start(myRequestSignal)
+    const res = await ky.get('http://example.com')
+    myRequestSignal.value = set(myRequestSignal, { hello: 'world' })
+} catch (_err) {
+    const err = _err as HTTPError
+    myRequestSignal.value = error(myRequestSignal, err)
+}
 ```
 
 
