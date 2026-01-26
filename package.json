@@ -1,11 +1,8 @@
 {
-  "private": true,
-  "type": "module",
+  "name": "@substrate-system/state",
   "version": "0.0.0",
-  "main": "dist/index.js",
-  "files": [
-    "./dist/*"
-  ],
+  "description": "Helpers for state in the browser",
+  "type": "module",
   "exports": {
     ".": {
       "import": "./dist/index.js",
@@ -22,6 +19,15 @@
       ]
     }
   },
+  "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "files": [
+    "./dist/*"
+  ],
   "scripts": {
     "lint": "eslint \"./**/*.{ts,js}\"",
     "test": "npm run build && esbuild ./test/index.ts --bundle | tapout",
@@ -63,6 +69,18 @@
     "typescript": "^5.9.3",
     "vite": "^7.3.1"
   },
-  "author": "nichoth <nichoth@nichoth.com> (https://nichoth.com)",
-  "license": "SEE LICENSE IN LICENSE"
+  "keywords": [
+    "state",
+    "browser"
+  ],
+  "homepage": "https://github.com/substrate-system/state",
+  "bugs": {
+    "url": "https://github.com/substrate-system/state/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/substrate-system/state.git"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "author": "nichoth <nichoth@nichoth.com> (https://nichoth.com)"
 }
