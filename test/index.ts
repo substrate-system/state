@@ -203,3 +203,8 @@ test('Signal reactivity triggers on state changes', t => {
 
     unsubscribe()
 })
+
+test('all done', () => {
+    // @ts-expect-error tests
+    window.testsFinished = true
+})
