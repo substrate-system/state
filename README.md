@@ -17,7 +17,8 @@ Helpful pieces for application state.
 
 - [Install](#install)
 - [Example](#example)
-  * [TS](#ts)
+  * [`RequestFor`](#requestfor)
+  * [With Signals](#with-signals)
 - [Modules](#modules)
   * [ESM](#esm)
   * [Common JS](#common-js)

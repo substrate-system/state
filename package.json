@@ -1,6 +1,6 @@
 {
   "name": "@substrate-system/state",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Helpers for state in the browser",
   "type": "module",
   "exports": {
