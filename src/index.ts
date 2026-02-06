@@ -25,12 +25,12 @@ RequestState.error = function<T=any, E=HTTPError> (
     req:Signal<RequestFor<T, E>>,
     err:E
 ) {
-    req.value = { ...req.value, error: err }
+    req.value = { ...req.value, pending: false, error: err }
 }
 
 RequestState.set = function <T=any, E=HTTPError> (
     req:Signal<RequestFor<T, E>>,
     data:T
 ) {
-    req.value = { ...req.value, data, error: null }
+    req.value = { pending: false, data, error: null }
 }
