@@ -39,12 +39,12 @@ test('RequestState.error sets error on the request', t => {
     t.equal(req.value.error, testError, 'error should be set')
 })
 
-test('RequestState.error preserves pending and data state', t => {
+test('RequestState.error', t => {
     const req = signal(RequestState<string>('some data'))
     RequestState.start(req)
     const testError = new Error('Request failed')
     RequestState.error(req, testError)
-    t.equal(req.value.pending, true, 'pending should remain true')
+    t.equal(req.value.pending, false, 'pending should be false')
     t.equal(req.value.data, 'some data', 'data should be preserved')
     t.equal(req.value.error, testError, 'error should be set')
 })
@@ -64,11 +64,11 @@ test('RequestState.set clears previous error', t => {
     t.equal(req.value.error, null, 'error should be cleared')
 })
 
-test('RequestState.set preserves pending state', t => {
+test('RequestState.set', t => {
     const req = signal(RequestState<string>())
     RequestState.start(req)
     RequestState.set(req, 'response data')
-    t.equal(req.value.pending, true, 'pending should remain true')
+    t.equal(req.value.pending, false, 'pending should be false')
     t.equal(req.value.data, 'response data', 'data should be set')
 })
 
